@@ -41,6 +41,7 @@ export class AppService {
             }
 
             return success({
+                "idUsuario": data.Idoso.id,
                 "access_token": await this.jwtService.signAsync(payload)
             });
 
