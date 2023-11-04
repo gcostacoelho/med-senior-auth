@@ -5,17 +5,34 @@ export type HttpResponse = {
 
 export const success = (data: any): HttpResponse => ({
     statusCode: 200,
-    body: data,
+    body: {
+        data,
+        infos: { statusCode: 200, }
+    },
 });
 
 export const created = (data: any): HttpResponse => ({
     statusCode: 201,
-    body: data,
+    body: {
+        data,
+        infos: { statusCode: 201, }
+    },
+});
+
+export const accepted = (data: any): HttpResponse => ({
+    statusCode: 202,
+    body: {
+        data,
+        infos: { statusCode: 202, }
+    }
 });
 
 export const badRequest = (errorMessage: any): HttpResponse => ({
     statusCode: 400,
-    body: errorMessage,
+    body: {
+        errorMessage,
+        infos: { statusCode: 400, }
+    },
 });
 
 export const unauthorized = (): HttpResponse => ({
@@ -25,10 +42,16 @@ export const unauthorized = (): HttpResponse => ({
 
 export const notFound = (errorMessage: any): HttpResponse => ({
     statusCode: 404,
-    body: errorMessage,
+    body: {
+        errorMessage,
+        infos: { statusCode: 400, }
+    },
 });
 
 export const serviceError = (errorMessage: any): HttpResponse => ({
     statusCode: 500,
-    body: errorMessage
+    body: {
+        errorMessage,
+        infos: { statusCode: 500, }
+    }
 });
